@@ -28,11 +28,11 @@ template "#{node['clamav']['conf_dir']}/clamd.conf" do
   mode '0644'
   action :create
   variables(
-    clamd: node['clamav']['clamd'],
-    database_directory: node['clamav']['database_directory'],
-    user: node['clamav']['user'],
-    allow_supplementary_groups: supp_groups,
-    bytecode: node['clamav']['bytecode']
+    :clamd => node['clamav']['clamd'],
+    :database_directory => node['clamav']['database_directory'],
+    :user => node['clamav']['user'],
+    :allow_supplementary_groups => supp_groups,
+    :bytecode => node['clamav']['bytecode']
   )
   if node['clamav']['clamd']['enabled']
     notifies :restart, "service[#{node['clamav']['clamd']['service']}]"

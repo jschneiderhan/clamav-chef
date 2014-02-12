@@ -25,7 +25,7 @@ include_recipe 'logrotate'
 log_files = [
   node['clamav']['clamd']['log_file'],
   node['clamav']['freshclam']['update_log_file']
-].keep_if { |f| f }.uniq
+].select { |f| f }.uniq
 
 log_files.map { |f| File.dirname(f) }.uniq.each do |d|
   directory d do

@@ -32,14 +32,14 @@ end
 c_service = node['clamav']['clamd']['service']
 c_enabled = node['clamav']['clamd']['enabled']
 service c_service do
-  supports status: true, restart: true
+  supports :status => true, :restart => true
   action :nothing
 end
 
 f_service = node['clamav']['freshclam']['service']
 f_enabled = node['clamav']['freshclam']['enabled']
 service f_service do
-  supports status: true, restart: true
+  supports :status => true, :restart => true
   action :nothing
 end
 

@@ -35,12 +35,12 @@ template "#{node['clamav']['conf_dir']}/freshclam.conf" do
   mode '0644'
   action :create
   variables(
-    freshclam: node['clamav']['freshclam'],
-    database_directory: node['clamav']['database_directory'],
-    database_owner: node['clamav']['user'],
-    allow_supplementary_groups: supp_groups,
-    notify_clamd: notify,
-    bytecode: node['clamav']['bytecode']
+    :freshclam => node['clamav']['freshclam'],
+    :database_directory => node['clamav']['database_directory'],
+    :database_owner => node['clamav']['user'],
+    :allow_supplementary_groups => supp_groups,
+    :notify_clamd => notify,
+    :bytecode => node['clamav']['bytecode']
   )
   if node['clamav']['freshclam']['enabled']
     notifies :restart, "service[#{node['clamav']['freshclam']['service']}]",
